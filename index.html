@@ -4,9 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto+Mono:wght@100;300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Test</title>
   </head>
   <body>
-    Hello world
+    <div class="">
+      <!-- prettier-ignore -->
+      <section id="title-section" class="section-parallax-text container position-relative center scroll-fill-200">
+        <div class="position-fixed full-width">
+          <h1 id="plx-text-1" class="plx-feature-text position-absolute center full-width m-auto mode-screen color-green" style="left: -1px">PARALLAX</h1>
+          <h1 id="plx-text-2" class="plx-feature-text position-absolute center full-width m-auto mode-screen color-red" style="left: 0px">PARALLAX</h1>
+          <h1 id="plx-text-3" class="plx-feature-text position-absolute center full-width m-auto mode-screen color-blue" style="left: 1px">PARALLAX</h1>
+        </div>
+        <p>scroll down to move the elements</p>
+      </section>
+      <div class="scroll-fill-100"></div>
+      <section id="another-section" class="section-another container position-relative center scroll-fill-200">
+        <h1>ANOTHER SECTION</h1>
+      </section>
+    </div>
   </body>
+  <script src="js/easing.js"></script>
+  <script src="js/scrollHelpers.js"></script>
+  <script src="js/global.js"></script>
 </html>
