@@ -1,0 +1,154 @@
+body,
+html {
+  background-color: black;
+  color: white;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 1.2em;
+  /* min-width: 100vw; */
+  min-height: 100vh;
+}
+
+/* TYPOGRAPHY */
+h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 5em;
+  line-height: 2em;
+}
+h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 4em;
+  line-height: 1.5em;
+}
+h3 {
+  font-weight: 800;
+  font-size: 2.5em;
+  line-height: 2em;
+}
+h4 {
+  font-weight: 800;
+  font-size: 2em;
+  line-height: 2em;
+}
+h5 {
+  font-weight: 800;
+  font-size: 1.75em;
+  line-height: 2em;
+}
+h6 {
+  font-weight: 800;
+  font-size: 1.5em;
+  line-height: 2em;
+}
+p,
+li {
+  font-size: 1em;
+  line-height: 1.2em;
+}
+small {
+  font-size: 0.8em;
+  line-height: 1em;
+}
+blockquote {
+  font-family: "Oswald", sans-serif;
+  font-style: italic;
+  font-size: 3em;
+  line-height: 2em;
+  padding-left: 1em;
+  border-left: 2px solid rgb(184, 11, 63);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+blockquote {
+  margin-bottom: 16px;
+}
+
+/* UTILITIES */
+:root {
+  --hue-offset: 50;
+}
+.center {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.position-relative {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+}
+.full-width {
+  width: 100%;
+}
+.m-auto {
+  margin: auto;
+}
+.color-red {
+  color: rgb(205, 50, 0);
+  color: rgb(calc(255 - var(--hue-offset)), var(--hue-offset), 0);
+}
+.color-green {
+  color: rgb(0, 205, 50);
+  color: rgb(0, calc(255 - var(--hue-offset)), var(--hue-offset));
+}
+.color-blue {
+  color: rgb(50, 0, 205);
+  color: rgb(var(--hue-offset), 0, calc(255 - var(--hue-offset)));
+}
+.mode-screen {
+  mix-blend-mode: screen;
+}
+.mode-multiply {
+  mix-blend-mode: multiply;
+}
+.position-fixed {
+  position: fixed !important;
+}
+
+/* COMPONENTS */
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.plx-feature-text {
+  font-size: 20vw;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  mix-blend-mode: screen;
+}
+
+/* SECTIONS */
+.section-parallax-text {
+  padding-bottom: 39vw;
+  overflow: hidden;
+}
+.test-red {
+  background-color: red;
+}
+
+/* SCROLL FILLERS */
+.scroll-fill-100 {
+  min-height: 100vh;
+}
+.scroll-fill-200 {
+  min-height: 200vh;
+}
+.scroll-fill-300 {
+  min-height: 300vh;
+}
+.scroll-fill-400 {
+  min-height: 400vh;
+}
+.scroll-fill-500 {
+  min-height: 500vh;
+}
