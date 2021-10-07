@@ -73,6 +73,7 @@ blockquote {
 /* UTILITIES */
 :root {
   --hue-offset: 50;
+  --main-pad: 50px;
 }
 .center {
   text-align: center;
@@ -84,6 +85,12 @@ blockquote {
 }
 .position-absolute {
   position: absolute;
+}
+.position-fixed {
+  position: fixed !important;
+}
+.position-sticky {
+  position: sticky !important;
 }
 .full-width {
   width: 100%;
@@ -103,14 +110,91 @@ blockquote {
   color: rgb(50, 0, 205);
   color: rgb(var(--hue-offset), 0, calc(255 - var(--hue-offset)));
 }
+.bg-black {
+  background-color: black;
+}
 .mode-screen {
   mix-blend-mode: screen;
 }
 .mode-multiply {
   mix-blend-mode: multiply;
 }
-.position-fixed {
-  position: fixed !important;
+.fade-to-black-down {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.25253851540616246) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.p1 {
+  padding: calc(0.25 * var(--main-pad));
+}
+.p2 {
+  padding: calc(0.5 * var(--main-pad));
+}
+.p3 {
+  padding: calc(0.75 * var(--main-pad));
+}
+.p4 {
+  padding: calc(1 * var(--main-pad));
+}
+.p5 {
+  padding: calc(1.5 * var(--main-pad));
+}
+.p6 {
+  padding: calc(2 * var(--main-pad));
+}
+.p7 {
+  padding: calc(3 * var(--main-pad));
+}
+.p8 {
+  padding: calc(4 * var(--main-pad));
+}
+.pb-1 {
+  padding-bottom: calc(0.25 * var(--main-pad));
+}
+.pb-2 {
+  padding-bottom: calc(0.5 * var(--main-pad));
+}
+.pb-3 {
+  padding-bottom: calc(0.75 * var(--main-pad));
+}
+.pb-4 {
+  padding-bottom: calc(1 * var(--main-pad));
+}
+.pb-5 {
+  padding-bottom: calc(1.5 * var(--main-pad));
+}
+.pb-6 {
+  padding-bottom: calc(2 * var(--main-pad));
+}
+.pb-7 {
+  padding-bottom: calc(3 * var(--main-pad));
+}
+.pb-8 {
+  padding-bottom: calc(4 * var(--main-pad));
+}
+.pt-1 {
+  padding-top: calc(0.25 * var(--main-pad));
+}
+.pt-2 {
+  padding-top: calc(0.5 * var(--main-pad));
+}
+.pt-3 {
+  padding-top: calc(0.75 * var(--main-pad));
+}
+.pt-4 {
+  padding-top: calc(1 * var(--main-pad));
+}
+.pt-5 {
+  padding-top: calc(1.5 * var(--main-pad));
+}
+.pt-6 {
+  padding-top: calc(2 * var(--main-pad));
+}
+.pt-7 {
+  padding-top: calc(3 * var(--main-pad));
+}
+.pt-8 {
+  padding-top: calc(4 * var(--main-pad));
 }
 
 /* COMPONENTS */
@@ -122,15 +206,37 @@ blockquote {
   font-size: 20vw;
   position: absolute;
   text-align: center;
+  /* align-items: center;
+  justify-content: center; */
   width: 100%;
   margin: auto;
   mix-blend-mode: screen;
+
+  /* fix z-index flash when transforming */
+  z-index: -1;
+  transform-style: preserve-3d;
+  transform: translate3d(0, 0, 0);
 }
 
 /* SECTIONS */
+section {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+section:not(.section-parallax-text) {
+  z-index: 10;
+  transform-style: preserve-3d;
+  transform: translate3d(0, 0, 0);
+}
 .section-parallax-text {
   padding-bottom: 39vw;
   overflow: hidden;
+}
+.section-another {
+  z-index: 10;
+  transform-style: preserve-3d;
+  transform: translate3d(0, 0, 0);
 }
 .test-red {
   background-color: red;

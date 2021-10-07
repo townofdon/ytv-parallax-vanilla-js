@@ -69,12 +69,12 @@ const useScroll = (onScroll = (scrollY = 0, winHeight = 0) => {}) => {
 };
 
 const rectStoreItemDefault = () => ({
-  top: undefined,
-  left: undefined,
-  bottom: undefined,
-  right: undefined,
-  width: undefined,
-  height: undefined,
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
+  width: 0,
+  height: 0,
   initialized: false,
 });
 const rectStore = {};
@@ -83,7 +83,7 @@ const rectStore = {};
  * Get the rect bounding box for a node excluding any transformations.
  * see: https://stackoverflow.com/questions/27745438/how-to-compute-getboundingclientrect-without-considering-transforms
  */
-const useRect = (node) => {
+const useRect = (node, callback = (rect) => {}) => {
   if (!node) throw new Error("nil node");
   if (!node.id) throw new Error("node must have an ID!!");
 
@@ -94,27 +94,28 @@ const useRect = (node) => {
     rectStore[id] = rectStoreItemDefault();
   }
 
-  const recalculate = () => {
+  const onCalculate = () => {
     rectStore[id] = calcPosition(node);
-    return rectStore[id];
+    callback(rectStore[id]);
   };
 
   if (!rectStore[id].initialized) {
-    recalculate();
+    rectStore[id].initialized = true;
+    onCalculate();
   }
 
-  return [rectStore[id], recalculate];
+  window.addEventListener("resize", onCalculate);
 };
 
 const calcPosition = (node) => {
   if (!node)
     return {
-      top: undefined,
-      left: undefined,
-      bottom: undefined,
-      right: undefined,
-      width: undefined,
-      height: undefined,
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+      width: 0,
+      height: 0,
     };
 
   // const style = getComputedStyle(node);
@@ -150,11 +151,12 @@ const animationStoreDefaultItem = () => ({
   initalized: false,
 });
 const animationStore = {};
-const useAnimate = (
+const useAnimateTransform = (
   $scrollTarget = null,
   $scrollSource = null,
   startPosition = { x: 0, y: 0 },
-  endPosition = { x: 0, y: 0 }
+  endPosition = { x: 0, y: 0 },
+  { easingFn = easing.easeInOutQuad, debug = false } = {}
 ) => {
   if (!$scrollTarget) throw new Error("scroll target is nil");
   if (!$scrollSource) throw new Error("scroll source is nil");
@@ -170,48 +172,61 @@ const useAnimate = (
 
   if (!animationStore[id].initialized) {
     animationStore[id].initialized = true;
-    const [rect] = useRect($scrollSource);
-    animationStore[id].min = rect.top;
-    animationStore[id].max = rect.bottom;
-    useScroll((scrollY) => {
-      animationStore[id].currentValue = scrollY;
-      // console.log(animationStore[id].currentValue, animationStore[id].previousValue);
-    });
-    setupAnimation($scrollTarget, animationStore[id], startPosition, endPosition);
-  }
+    // useRect($scrollSource, (rect) => {
+    //   animationStore[id].min = Math.max(rect.top - window.innerHeight, 0);
+    //   animationStore[id].max = rect.bottom;
+    // });
+    // useScroll((scrollY) => {
+    //   animationStore[id].currentValue = scrollY;
+    // });
+    // setupAnimation($scrollTarget, animationStore[id], startPosition, endPosition, easingFn, debug);
 
-  // TODO:
-  // - CALCULATE MIN/MAX FROM SCROLL SOURCE NODE RECT
-  // - CALC RECT FOR SOURCE
-  // - STORE MIN/MAX STATE, CURRENT/PREV VALUE FOR RECT
+    useAnimate(
+      $scrollSource,
+      (v, vI) => {
+        if ($scrollTarget)
+          // prettier-ignore
+          transform(
+            $scrollTarget,
+            vI * startPosition.x + v * endPosition.x,
+            vI * startPosition.y + v * endPosition.y
+          );
+      },
+      easingFn
+    );
+  }
 };
 
-function setupAnimation(node = null, state = null, startPosition, endPosition) {
-  if (!node) throw new Error("node is nil in setupAnimation()");
-  if (!state) throw new Error("state is nil in setupAnimation()");
+function useAnimate($scrollSource = null, onTick = (val, valInverse) => {}, ease = easing.easeInOutQuad) {
+  const state = { currentScrollY: 0, prevScrollY: 0, min: 0, max: 999999999999 };
+
+  useScroll((scrollY) => {
+    state.currentScrollY = scrollY;
+  });
+
+  useRect($scrollSource, (rect) => {
+    state.min = Math.max(rect.top - window.innerHeight, 0);
+    state.max = rect.bottom || 1;
+  });
 
   let timestampPrevious = 0;
+  let initialized = false;
   function loop(timestamp) {
     if (timestamp === timestampPrevious) return;
 
-    if (state.currentValue !== state.previousValue) {
-      const { min, max } = state;
-      const mul = (state.currentValue - min) / max;
-      const mulEased = easing.easeInQuart(mul, 0, 1, 1);
-      const mulInverse = min / max - mulEased + 1;
+    const { min = 0, max = 1 } = state;
 
-      if (node)
-        transform(
-          node,
-          mulInverse * startPosition.x + mulEased * endPosition.x,
-          mulInverse * startPosition.y + mulEased * endPosition.y
-        );
+    if (!initialized || state.currentScrollY !== state.prevScrollY) {
+      initialized = true;
 
-      // if ($p1) transform($p1, mulEased * constants.offsetP1.x, mulEased * constants.offsetP1.y);
-      // if ($p2) transform($p2, mulEased * constants.offsetP2.x, mulEased * constants.offsetP2.y);
-      // if ($p3) transform($p3, mulEased * constants.offsetP3.x, mulEased * constants.offsetP3.y);
+      const multiplier = (state.currentScrollY - min) / max;
+      const mClamped = clampVal(multiplier, 0, 1);
+      const mEased = ease(mClamped, 0, 1, 1);
+      const mInverse = 1 - mEased;
 
-      state.previousValue = state.currentValue;
+      onTick(mEased, mInverse);
+
+      state.prevScrollY = state.currentScrollY;
     }
 
     timestampPrevious = timestamp;
@@ -223,6 +238,10 @@ function setupAnimation(node = null, state = null, startPosition, endPosition) {
 function transform($elem = null, x = 0, y = 0) {
   if (!$elem) return;
   $elem.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function clampVal(num = 0, min = 0, max = 0) {
+  return Math.max(min, Math.min(num, max));
 }
 
 window.useScroll = useScroll;

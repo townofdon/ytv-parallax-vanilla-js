@@ -1,5 +1,9 @@
 window.easing = {};
 
+window.easing.linear = function easeLinear(elapsed = 0, initialValue = 0, amountOfChange = 0, duration = 0) {
+  return amountOfChange * (elapsed /= duration) + initialValue;
+};
+
 window.easing.easeInQuad = function easeInQuad(elapsed = 0, initialValue = 0, amountOfChange = 0, duration = 0) {
   return amountOfChange * (elapsed /= duration) * elapsed + initialValue;
 };
