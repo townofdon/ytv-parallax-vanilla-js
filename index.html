@@ -26,9 +26,9 @@
             class="plx-feature-text color-green"
             style="left: -1px"
             data-animate-mode="transform"
-            data-animate-scroll-container="title-section"
-            data-animate-position-start="0,0"
-            data-animate-position-end="-2000,0"
+            data-animate-scroll-source="title-section"
+            data-animate-value-start="0,0"
+            data-animate-value-end="-2000,0"
             data-animate-easing="easeInQuart"
           >
             PARALLAX
@@ -38,9 +38,9 @@
             class="plx-feature-text color-red"
             style="left: 0px"
             data-animate-mode="transform"
-            data-animate-scroll-container="title-section"
-            data-animate-position-start="0,0"
-            data-animate-position-end="0,-800"
+            data-animate-scroll-source="title-section"
+            data-animate-value-start="0,0"
+            data-animate-value-end="0,-800"
             data-animate-easing="easeInQuart"
           >
             PARALLAX
@@ -50,13 +50,34 @@
             class="plx-feature-text color-blue"
             style="left: 1px"
             data-animate-mode="transform"
-            data-animate-scroll-container="title-section"
-            data-animate-position-start="0,0"
-            data-animate-position-end="2000,0"
+            data-animate-scroll-source="title-section"
+            data-animate-value-start="0,0"
+            data-animate-value-end="2000,0"
             data-animate-easing="easeInQuart"
           >
             PARALLAX
           </h1>
+          <div id="plx-circle-1" class="plx-feature-circle bg-red"
+            data-animate-mode="transform"
+            data-animate-scroll-source="title-section"
+            data-animate-value-start="0,0"
+            data-animate-value-end="2000,0"
+            data-animate-easing="linear"
+          ></div>
+          <div id="plx-circle-2" class="plx-feature-circle bg-blue"
+            data-animate-mode="transform"
+            data-animate-scroll-source="title-section"
+            data-animate-value-start="0,0"
+            data-animate-value-end="2100,0"
+            data-animate-easing="linear"
+          ></div>
+          <div id="plx-circle-3" class="plx-feature-circle bg-green"
+            data-animate-mode="transform"
+            data-animate-scroll-source="title-section"
+            data-animate-value-start="0,0"
+            data-animate-value-end="2200,0"
+            data-animate-easing="linear"
+          ></div>
         </div>
       </section>
       <section class="p8"></section>
@@ -67,11 +88,10 @@
             class="plx-feature-text color-blue"
             style="left: -1px"
             data-animate-mode="transform"
-            data-animate-scroll-container="title-section-2"
-            data-animate-position-start="-2000,0"
-            data-animate-position-end="0,0"
+            data-animate-scroll-source="title-section-2"
+            data-animate-value-start="-2000,0"
+            data-animate-value-end="0,0"
             data-animate-easing="easeOutQuint"
-            data-debug="true"
           >
             <small><small>IS AWESOME.</small></small>
           </h1>
@@ -80,9 +100,9 @@
             class="plx-feature-text color-red"
             style="left: 0px"
             data-animate-mode="transform"
-            data-animate-scroll-container="title-section-2"
-            data-animate-position-start="0,800"
-            data-animate-position-end="0,0"
+            data-animate-scroll-source="title-section-2"
+            data-animate-value-start="0,800"
+            data-animate-value-end="0,0"
             data-animate-easing="easeOutQuint"
           >
             <small><small>IS AWESOME.</small></small>
@@ -92,26 +112,93 @@
             class="plx-feature-text color-green"
             style="left: 1px"
             data-animate-mode="transform"
-            data-animate-scroll-container="title-section-2"
-            data-animate-position-start="2000,0"
-            data-animate-position-end="0,0"
+            data-animate-scroll-source="title-section-2"
+            data-animate-value-start="2000,0"
+            data-animate-value-end="0,0"
             data-animate-easing="easeOutQuint"
           >
             <small><small>IS AWESOME.</small></small>
           </h1>
+          <div
+            class="mode-multiply"
+            id="plx-square-1"
+            data-animate-mode="transform"
+            data-animate-scroll-source="title-section-2"
+            data-animate-value-start="-2000,0"
+            data-animate-value-end="0,0"
+            data-animate-easing="linear"
+          >
+            <div
+              class="plx-feature-square bg-red"
+              id="square-rotator-1"
+              data-animate-mode="rotate"
+              data-animate-scroll-source="title-section-2"
+              data-animate-value-start="-360"
+              data-animate-value-end="-2"
+              data-animate-easing="linear"
+            ></div>
+          </div>
+          <div
+            id="plx-square-2"
+            class="mode-multiply"
+            data-animate-mode="transform"
+            data-animate-scroll-source="title-section-2"
+            data-animate-value-start="-2100,0"
+            data-animate-value-end="0,0"
+            data-animate-easing="linear"
+          >
+            <div
+              class="plx-feature-square bg-blue"
+              id="square-rotator-2"
+              data-animate-mode="rotate"
+              data-animate-scroll-source="title-section-2"
+              data-animate-value-start="-380"
+              data-animate-value-end="0"
+              data-animate-easing="linear"
+            ></div>
+          </div>
+          <div
+            id="plx-square-3"
+            class="mode-multiply"
+            data-animate-mode="transform"
+            data-animate-scroll-source="title-section-2"
+            data-animate-value-start="-2200,0"
+            data-animate-value-end="0,0"
+            data-animate-easing="linear"
+          >
+            <div
+              class="plx-feature-square bg-green"
+              id="square-rotator-3"
+              data-animate-mode="rotate"
+              data-animate-scroll-source="title-section-2"
+              data-animate-value-start="-400"
+              data-animate-value-end="2"
+              data-animate-easing="linear"
+            ></div>
+          </div>
+          <!-- <div
+            id="plx-square-3"
+            class="plx-feature-square bg-green"
+            data-animate-mode="transform"
+            data-animate-scroll-source="title-section-2"
+            data-animate-value-start="-2200,0"
+            data-animate-value-end="0,0"
+            data-animate-easing="linear"
+          ></div> -->
         </div>
       </section>
-      <section>
-        <div class="scroll-fill-100 p8"></div>
+      <section id="section-betwixt">
+        <div class="p8"></div>
         <div class="scroll-fill-100 fade-to-black-down"></div>
       </section>
+
       <section id="another-section" class="section-another container position-relative center test-red pb-4">
         <h1
           id="plx-text-7"
           data-animate-mode="transform"
-          data-animate-scroll-container="another-section"
-          data-animate-position-start="-200,0"
-          data-animate-position-end="1000,0"
+          data-animate-scroll-source="another-section"
+          data-animate-value-start="-200,0"
+          data-animate-value-end="200,0"
           data-animate-easing="linear"
         >
           AN ABSOLUTELY STELLAR SECTION
@@ -119,9 +206,9 @@
         <h2
           id="plx-text-8"
           data-animate-mode="transform"
-          data-animate-scroll-container="another-section"
-          data-animate-position-start="200,0"
-          data-animate-position-end="-1000,0"
+          data-animate-scroll-source="another-section"
+          data-animate-value-start="500,0"
+          data-animate-value-end="0,0"
           data-animate-easing="linear"
         >
           TEXT
@@ -129,9 +216,9 @@
         <h2
           id="plx-text-9"
           data-animate-mode="transform"
-          data-animate-scroll-container="another-section"
-          data-animate-position-start="400,0"
-          data-animate-position-end="-2000,0"
+          data-animate-scroll-source="another-section"
+          data-animate-value-start="750,0"
+          data-animate-value-end="-200,0"
           data-animate-easing="linear"
         >
           MOVES
@@ -140,9 +227,9 @@
           <h2
             id="plx-text-10"
             data-animate-mode="transform"
-            data-animate-scroll-container="another-section"
-            data-animate-position-start="600,0"
-            data-animate-position-end="-3000,0"
+            data-animate-scroll-source="another-section"
+            data-animate-value-start="1000,0"
+            data-animate-value-end="-400,0"
             data-animate-easing="linear"
           >
             ⬅︎ SIDEWAYS
@@ -152,9 +239,9 @@
             class="position-absolute mode-multiply color-green"
             style="top: 0"
             data-animate-mode="transform"
-            data-animate-scroll-container="another-section"
-            data-animate-position-start="100,0"
-            data-animate-position-end="10000,0"
+            data-animate-scroll-source="another-section"
+            data-animate-value-start="-1500,0"
+            data-animate-value-end="2000,0"
             data-animate-easing="linear"
           >
             ⬅︎ SIDEWAYS
@@ -164,9 +251,9 @@
           <h2
             id="plx-text-12"
             data-animate-mode="transform"
-            data-animate-scroll-container="another-section"
-            data-animate-position-start="-2000,0"
-            data-animate-position-end="20000,0"
+            data-animate-scroll-source="another-section"
+            data-animate-value-start="-3000,0"
+            data-animate-value-end="2000,0"
             data-animate-easing="linear"
           >
             ⬅︎ WHICHWAYS? ➡︎
@@ -176,16 +263,151 @@
             class="position-absolute mode-multiply color-blue"
             style="top: 0"
             data-animate-mode="transform"
-            data-animate-scroll-container="another-section"
-            data-animate-position-start="2000,0"
-            data-animate-position-end="-10000,0"
+            data-animate-scroll-source="another-section"
+            data-animate-value-start="2000,0"
+            data-animate-value-end="-600,0"
             data-animate-easing="linear"
           >
             ⬅︎ WHICHWAYS? ➡︎
           </h2>
         </div>
       </section>
-      <section class="section-three container position-relative center scroll-fill-100 bg-black"></section>
+      <section id="section-three" class="section-three container position-relative center scroll-fill-100 bg-black">
+        <div class="scroll-fill-100"></div>
+        <div id="trigger-three" class="scroll-fill-100 position-relative"></div>
+        <div
+          id="plx-bg-14"
+          class="position-absolute bg-white absolute-fill"
+          data-animate-mode="opacity"
+          data-animate-scroll-source="trigger-three"
+          data-animate-value-start="0"
+          data-animate-value-end="1"
+        ></div>
+        <div id="trigger-four" class="scroll-fill-100">
+          <div class="position-fixed full-width top-0 left-0">
+            <div
+              id="end-square-1"
+              class="end-square bg-black opacity-50"
+              data-animate-mode="transform"
+              data-animate-scroll-source="trigger-four"
+              data-animate-value-start="0,-125vh"
+              data-animate-value-end="0,-50vh"
+              data-animate-easing="linear"
+            ></div>
+            <div
+              id="end-square-2"
+              class="end-square bg-black opacity-50"
+              data-animate-mode="transform"
+              data-animate-scroll-source="trigger-four"
+              data-animate-value-start="0,125vh"
+              data-animate-value-end="0,50vh"
+              data-animate-easing="linear"
+            ></div>
+            <div
+              id="end-square-3"
+              class="end-square bg-black opacity-50"
+              data-animate-mode="transform"
+              data-animate-scroll-source="trigger-four"
+              data-animate-value-start="-125vw,0"
+              data-animate-value-end="-50vw,0"
+              data-animate-easing="linear"
+            ></div>
+            <div
+              id="end-square-4"
+              class="end-square bg-black opacity-50"
+              data-animate-mode="transform"
+              data-animate-scroll-source="trigger-four"
+              data-animate-value-start="125vw,0"
+              data-animate-value-end="50vw,0"
+              data-animate-easing="linear"
+            ></div>
+            <div
+              id="end-square-1b"
+              class="end-square bg-black opacity-90"
+              data-animate-mode="transform"
+              data-animate-scroll-source="trigger-four"
+              data-animate-value-start="0,-100vh"
+              data-animate-value-end="0,-50vh"
+              data-animate-easing="easeOutCubic"
+            ></div>
+            <div
+              id="end-square-2b"
+              class="end-square bg-black opacity-90"
+              data-animate-mode="transform"
+              data-animate-scroll-source="trigger-four"
+              data-animate-value-start="0,100vh"
+              data-animate-value-end="0,50vh"
+              data-animate-easing="easeOutCubic"
+            ></div>
+            <div
+              id="end-square-3b"
+              class="end-square bg-black opacity-90"
+              data-animate-mode="transform"
+              data-animate-scroll-source="trigger-four"
+              data-animate-value-start="-100vw,0"
+              data-animate-value-end="-50vw,0"
+              data-animate-easing="easeOutCubic"
+            ></div>
+            <div
+              id="end-square-4b"
+              class="end-square bg-black opacity-90"
+              data-animate-mode="transform"
+              data-animate-scroll-source="trigger-four"
+              data-animate-value-start="100vw,0"
+              data-animate-value-end="50vw,0"
+              data-animate-easing="easeOutCubic"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- prettier-ignore -->
+      <section
+        id="oblivion-text-container"
+        data-animate-mode="show"
+        data-animate-scroll-source="section-three"
+      >
+        <div class="position-fixed center top-0 full-width" style="margin-top: 40vh">
+          <div
+            id="translate-oblivion-text"
+            data-animate-mode="transform"
+            data-animate-scroll-source="section-three"
+            data-animate-value-start="-15,0"
+            data-animate-value-end="15,0"
+            data-animate-easing="linear"
+          >
+            <div
+              id="blur-oblivion-text"
+              data-animate-mode="blur"
+              data-animate-scroll-source="trigger-three"
+              data-animate-value-start="0"
+              data-animate-value-end="10"
+            >
+              <h4
+                id="plx-text-15"
+                class="color-white"
+                data-animate-mode="opacity"
+                data-animate-scroll-source="trigger-three"
+                data-animate-value-start="1"
+                data-animate-value-end="0"
+              >
+                Fade Into Oblivion.
+              </h4>
+              <h4
+                id="plx-text-16"
+                class="position-absolute color-black full-width"
+                style="top: 0"
+                data-animate-mode="opacity"
+                data-animate-scroll-source="trigger-three"
+                data-animate-value-start="0"
+                data-animate-value-end="1"
+              >
+                Fade Into Oblivion.
+              </h4>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </body>
   <script src="js/easing.js"></script>
