@@ -32,3 +32,7 @@ docker-compose up
 ```
 git subtree push --prefix src origin gh-pages
 ```
+
+## Tutorial Video
+
+https://www.youtube.com/watch?v=Tzt3wYakHBw
