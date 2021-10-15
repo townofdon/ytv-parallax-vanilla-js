@@ -22,3 +22,9 @@ Run the server
 ```
 docker-compose up
 ```
+
+## Deploying to Github Pages
+
+```
+git subtree push --prefix src origin gh-pages
+```
